@@ -48,15 +48,15 @@ export default {
   name: 'exercise',
   data () {
     return {
-      noOfQuestions: 2,
+      noOfQuestions: 10,
       noOfGuesses: 0,
       activeQuestion: 1,
       startTime: null,
       endTime: null,
       duration: 0,
       exerciseComplete: false,
-      exerciseTitle: 'Addition Exercise #1',
-      exerciseDescription: 'Addition of numbers with 2 digits',
+      exerciseTitle: 'Multiplication of any 2 digit numbers',
+      exerciseDescription: 'ab x cd = (10a + b) x (10c + d)',
       myDuration: 0
     }
   },

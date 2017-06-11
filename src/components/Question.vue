@@ -7,10 +7,29 @@
           <p class="subtitle">Click on the step title to display or hide tips</p>
           <article class="message is-success">
             <div class="message-header" v-on:click="isHidden = !isHidden">
-              Step 1
+              <div class="columns">
+                <div class="column is-2">
+                  <i v-bind:class="[isHidden ? 'fa-chevron-right' : 'fa-chevron-down', 'fa']"></i>
+                </div>
+                <div class="column">
+                  <p>Description</p>
+                </div>
+              </div>
             </div>
-            <div v-show="!isHidden" class="message-body">Further explanation on the first step</div>
+            <div v-show="!isHidden" class="message-body">
+              <p>
+              To easily multiply any 2-digit numbers together a simple algorithm is as follows (where a is the tens digit of the first number, b is the ones digit of the first number, c is the tens digit of the second number and d is the ones digit of the second number):
+              </p>
+              <br>
+              <p>
+              ab x cd = (10a + b) * (10c + d)
+              </p>
+              <p>
+              = 100(a * c) + 10(b * c) + 10(a * d) + (b * d)
+              </p>
+            </div>
           </article>
+          <step v-for="i in steps" :args="args" :stepNumber="i" v-bind:key="'step'+i"></step>
           <div class="title">
             <input v-bind:class="isWrong ? 'shake animated is-danger' : ''" v-model="response" v-focus v-on:keyup.enter="evaluate" class="input is-info is-large" type="text" placeholder="Enter your answer and hit enter" value="">
           </div>
@@ -21,6 +40,7 @@
 </template>
 
 <script>
+import Step from '@/components/Step'
 export default {
   name: 'question',
   data () {
@@ -28,14 +48,15 @@ export default {
       isHidden: true,
       args: [],
       ops: [],
+      steps: 5,
       questionString: '',
       isWrong: false,
       response: ''
     }
   },
   created: function () {
-    this.arguments(2, 0, 100, true)
-    this.operations(1, '+')
+    this.arguments(2, 10, 100, true)
+    this.operations(1, 'x')
     this.question()
   },
   methods: {
@@ -67,7 +88,7 @@ export default {
       this.questionString = str + '= ?'
     },
     evaluate: function (event) {
-      const total = this.args.reduce((a, b) => a + b, 0)
+      const total = this.args.reduce((a, b) => a * b, 1)
       const result = total === parseInt(this.response, 10)
       this.$emit('guess')
       if (result) {
@@ -80,6 +101,15 @@ export default {
         }.bind(this), 1000)
       }
     }
+  },
+  components: {
+    'step': Step
   }
 }
 </script>
+
+<style>
+.message-body {
+  text-align: left;
+}
+</style>

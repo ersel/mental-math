@@ -63,7 +63,7 @@ export default {
     return {
       exercises: [{
         title: 'Multiplication of any 2 digit numbers',
-        description: 'Learn how to multiply any 2 digit numbers in 4 simple steps.',
+        description: 'Learn how to multiply any 2 digit numbers in 5 simple steps.',
         route: '/#/exercise1',
         button_label: 'Lets go!'
       }
