@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="nav">
       <div class="nav-left">
-        <a class="nav-item">
+        <a href="/" class="nav-item">
           <img src="../static/logo.png" alt="MentalMath logo">
         </a>
       </div>
@@ -13,7 +13,7 @@
         <div class="nav-item">
           <div class="field is-grouped">
             <p class="control">
-            <a class="button is-success" >
+            <a href="https://github.com/ersel/mental-math" class="button is-success">
               <span class="icon">
                 <i class="fa fa-github"></i>
               </span>
