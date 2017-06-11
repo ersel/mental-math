@@ -3,7 +3,7 @@
     <nav class="nav">
       <div class="nav-left">
         <a class="nav-item">
-          <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+          <img src="../static/logo.png" alt="MentalMath logo">
         </a>
       </div>
 
